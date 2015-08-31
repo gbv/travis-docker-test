@@ -7,9 +7,10 @@ services:
 script:
     - ./hello
     - docker pull ubuntu:14.04 # set up another Ubuntu 14.04 in Docker
-    - docker ps -l
-    - docker ps -l | awk 'NR==2 {print $1}'
+    - docker run -d ubuntu:14.04
+    - docker ps -l --format "{{.ID}}"
+    - ID=`docker ps -l --format "{{.ID}}"
     - ID=`docker ps -l | awk 'NR==2 {print $1}'`
     - echo $ID
-    - ls /var/lib/docker/devicemapper/mnt/
+    - sudo ls /var/lib/docker/devicemapper/mnt/
       #    - cp hello /var/lib/docker/devicemapper/mnt/$ID/rootfs/
