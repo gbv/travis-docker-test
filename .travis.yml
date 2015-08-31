@@ -7,7 +7,9 @@ services:
 script:
     # set up another Ubuntu 14.04 in Docker
     - docker pull ubuntu:14.04 
-    - sudo ls /var/lib/docker/aufs/mnt/`docker run --name=box -d ubuntu:14.04`/rootfs/root/
+    - docker run --name=box -d ubuntu:14.04 bash
+      #- sudo ls /var/lib/docker/aufs/mnt/`i
     - docker ps
-      #- tar -cv hello | docker exec -i box tar x -C /root
-    - docker run -i box ls /root
+    - docker exec box ls /root
+    - tar -cv hello | docker exec -i box tar x -C /root
+    - docker run box /bin/bash -c "ls /root"
