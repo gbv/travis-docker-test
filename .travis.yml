@@ -5,10 +5,10 @@ services:
     - docker
 
 script:
-    - ./hello
-    - docker pull ubuntu:14.04 # set up another Ubuntu 14.04 in Docker
-    - docker run -d ubuntu:14.04 --name=matroshka
+    # set up another Ubuntu 14.04 in Docker
+    - docker pull ubuntu:14.04 
+    - `docker run --name=box -d ubuntu:14.04`
     - docker ps -l
-    - sudo ls /var/lib/docker/
-    - tar -cv hello | docker exec -i matroshka tar x -C /root
-    - docker run matroshka ls /root
+    - sudo ls /var/lib/docker/aufs/mnt/
+    - tar -cv hello | docker exec -i box tar x -C /root
+    - docker run box ls /root
