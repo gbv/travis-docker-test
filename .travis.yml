@@ -7,8 +7,8 @@ services:
 script:
     - ./hello
     - docker pull ubuntu:14.04 # set up another Ubuntu 14.04 in Docker
-    - docker run -d ubuntu:14.04
+    - docker run -d ubuntu:14.04 --name=matroshka
     - docker ps -l
     - sudo ls /var/lib/docker/
-    - tar -cv hello | docker exec -i ubuntu tar x -C /root
-    - docker run ubuntu ls /root
+    - tar -cv hello | docker exec -i matroshka tar x -C /root
+    - docker run matroshka ls /root
