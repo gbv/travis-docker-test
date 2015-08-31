@@ -5,9 +5,9 @@ services:
     - docker
 
 script:
-    # set up another Ubuntu 14.04 in Docker running bash
+    # set up another Ubuntu 14.04 in Docker running bash in the background
     - docker pull ubuntu:14.04 
-    - docker run --name box -i -t ubuntu:14.04 bash
+    - docker run --name -d -i ubuntu:14.04 bash
       #- sudo ls /var/lib/docker/aufs/mnt/`i
     - docker ps
     - docker exec box ls /root
