@@ -8,9 +8,7 @@ script:
     - ./hello
     - docker pull ubuntu:14.04 # set up another Ubuntu 14.04 in Docker
     - docker run -d ubuntu:14.04
-    - docker ps -l --format "{{.ID}}"
-    - ID=`docker ps -l --format "{{.ID}}"
-    - ID=`docker ps -l | awk 'NR==2 {print $1}'`
-    - echo $ID
-    - sudo ls /var/lib/docker/devicemapper/mnt/
-      #    - cp hello /var/lib/docker/devicemapper/mnt/$ID/rootfs/
+    - docker ps -l
+    - sudo ls /var/lib/docker/
+    - tar -cv hello | docker exec -i ubuntu tar x -C /root
+    - docker run ubuntu ls /root
