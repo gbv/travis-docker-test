@@ -6,6 +6,6 @@ services:
 
 script:
     - ./hello
-    - docker pull ubuntu/trusty # set up another Ubuntu 14.04 in Docker
+    - docker pull ubuntu:14.04 # set up another Ubuntu 14.04 in Docker
     - docker ps -a  
       #    - cp hello /var/lib/docker/devicemapper/mnt/$ID/rootfs/
